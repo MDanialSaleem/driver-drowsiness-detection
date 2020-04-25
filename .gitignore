@@ -1,0 +1,7 @@
+Images/
+models/
+Videos/
+__pycache__/
+cvbasics.py
+.vscode/
+*.txt
