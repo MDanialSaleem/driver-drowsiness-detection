@@ -5,7 +5,7 @@ been implemented but this causes issues with detection for some side faces.
 
 2. Feed the bounding box of face into a facial landmark detector. A pretrained landmark finder is located in dlib. This has been implemented.
 
-3. After finding landmarks like eye, mouth, we need to feed them into a classifier. A pretrained classifier is given [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/). This project is completely working. However, this uses haar cascade based facial detection which is known to be inefficient. I could not find a pretrained yawn model. The readme of [this project](https://github.com/AnirudhGP/DrowsyDriverDetection) contains links to datasets for eye and yawn. These can be optionally trained or maybe we can find a pretrained model.
+3. After finding landmarks like eye, mouth, we need to feed them into a classifier. A pretrained classifier is given [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/). This project is completely working. However, this uses haar cascade based facial detection which is known to be inefficient. I could not find a pretrained yawn model. Dataset was obtained from [here](http://parnec.nuaa.edu.cn/xtan/data/ClosedEyeDatabases.html). We used the one with only eye patches. This dataset was trained on primitive model. Currently, accuracy is nearly 95% with no signs of overfitting. 
 
 The current project contains two files, haar.py which uses a haar based classifier. This classifier can be downloaded from [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/).
 
