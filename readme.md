@@ -5,14 +5,14 @@ been implemented but this causes issues with detection for some side faces.
 
 2. Feed the bounding box of face into a facial landmark detector. A pretrained landmark finder is located in dlib. This has been implemented.
 
-3. After finding landmarks like eye, mouth, we need to feed them into a classifier. A pretrained classifier is given [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/). This project is completely working. However, this uses haar cascade based facial detection which is known to be inefficient. I could not find a pretrained yawn model. Dataset was obtained from [here](http://parnec.nuaa.edu.cn/xtan/data/ClosedEyeDatabases.html). We used the one with only eye patches. This dataset was trained on primitive model. Currently, accuracy is nearly 95% with no signs of overfitting. 
+3. After finding landmarks like eye, mouth, we need to feed them into a classifier. A pretrained classifier is given [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/). This project is completely working. However, this uses haar cascade based facial detection which is known to be inefficient. I could not find a pretrained yawn model. Dataset was obtained from [here](http://parnec.nuaa.edu.cn/xtan/data/ClosedEyeDatabases.html). We used the one with only eye patches. This dataset was trained on primitive model. Currently, accuracy is nearly 95% with no signs of overfitting. Our own trained model can be downloaded from [here] (https://drive.google.com/open?id=1byaquY91zGXs00P6UAIgTg3yQzQCO9zk)
 
 The current project contains two files, haar.py which uses a haar based classifier. This classifier can be downloaded from [here](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/).
 
-Another file is builtin.py which uss the builtin SDD detector found in open cv and the two facial landmark detector found in dlib. SSD can be found [here](https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/). Dlib models can be found [here](https://github.com/davisking/dlib-models). We use the facial landmark predictor 68 and 5. 5 will prolly not be used. 
+Another file is main.py which uss the builtin SDD detector found in open cv and the two facial landmark detector found in dlib. SSD can be found [here](https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/). Dlib models can be found [here](https://github.com/davisking/dlib-models). We use the facial landmark predictor 68 and 5. 5 will prolly not be used. 
 Just using it now it now to see if we can get maybe better accuracy with it.
 
-As it stands, part 1 and 2 are compelted. But they require more accuracy. Part 2 has been done exactly
+As it stands, all parts are completed. But they require more accuracy. Part 2 has been done exactly
 like our primary paper. Part one has been chnaged from MTCNN+KCF to SSD. 
 As far as the issue with accuracy is concerned, we can try tackling that by using face detectors 
 built into dlib (there is HOG+SVN based detector and a CNN based detector). Creator of dlid mentions
