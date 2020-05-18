@@ -1,3 +1,36 @@
+
+# Quick Setup 
+
+## Getting models
+Download [this](https://drive.google.com/open?id=1QCXmKlSQidpg35FxxOdB4Cz_tvecUA9s) folder. And store all the files in Models directory within your project.
+
+## Creating env.
+```
+conda env create -f environment.yml
+```
+
+## Runnng code
+Activate the env.
+
+```
+conda activate ddd
+```
+
+To run on webcam
+
+```
+python main.py
+```
+
+To run with image
+
+```
+python main.py --impath="pathtoimage"
+```
+
+Left and right shows the number of time the detector is counter the respective eye to be open.
+
+
 # Basic Procedure
 1. Locate faces in videos. This can be done in a single step
 with something like builtin detector of OpenCV which uses Single Shot Detector as explained [here](https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/) . This has

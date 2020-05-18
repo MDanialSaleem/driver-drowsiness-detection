@@ -1,3 +1,4 @@
+from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
@@ -6,6 +7,11 @@ import numpy as np
 import cv2
 import os
 from pathlib import Path
+
+print("[INFO] Loading our own neural network for open close detection")
+model = load_model("Models/dddshallow.hdf5")
+print("[INFO] Complete")
+
 
 
 class Preprocessor:
@@ -28,7 +34,7 @@ class ImageToArrayPreprocessor:
 
 
 
-def predict(data, model):
+def predict(data):
     data = cv2.cvtColor(data, cv2.COLOR_BGR2GRAY)
     data = cv2.cvtColor(data, cv2.COLOR_GRAY2BGR)
     sp = Preprocessor(24, 24)
