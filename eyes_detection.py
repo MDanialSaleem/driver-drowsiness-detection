@@ -1,5 +1,5 @@
 import dlib
-from preprocess import getEyes, shape_to_np
+from preprocess import getEyesPrimary, shape_to_np, getEyesModified
 
 
 print("[INFO] Loading DLIB shape predictor 5 and 68")
@@ -16,7 +16,7 @@ def getEyesBB(image, box):
     face_location = dlib.rectangle(*box)
     shape68 = DLIB68(image, face_location)
     shape68 = shape_to_np(shape68, 68)
-    left68, right68 = getEyes(shape68)
+    left68, right68 = getEyesModified(shape68)
     return left68, right68
 
 
@@ -25,8 +25,8 @@ def extractROI(image, left, right):
     def getEach(image, eye):
         x1, y1 = eye[0]
         x2, y2 = eye[1]
-        paddingTop = 20
-        paddingBottom = 20
+        paddingTop = 0
+        paddingBottom = 0
         x1 -= paddingTop
         y1 -= paddingTop
         x2 += paddingBottom
