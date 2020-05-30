@@ -3,7 +3,7 @@ from facedetection import getFace
 from eyes_detection import getEyesBB, extractROI
 import numpy as np
 import cv2
-
+import winsound
 
 import sys
 import time
@@ -22,6 +22,9 @@ if impath == "video":
 
 lCount = 0
 rCount = 0
+
+closedCount = 0
+alarmRunning = False
 
 while True:
     if impath == "video":
@@ -44,10 +47,22 @@ while True:
         lCount = lCount + 1 if lResult != 0 else lCount
         rCount = rCount + 1 if rResult != 0 else rCount
 
-        cv2.putText(image, "Left" + str(lCount), (20, 20),
-                    cv2.FONT_HERSHEY_COMPLEX, 1.0, (0, 0, 255))
-        cv2.putText(image, "Right" + str(rCount), (20, 40),
-                    cv2.FONT_HERSHEY_COMPLEX, 1.0, (0, 0, 255))
+        if lResult > 0 or rResult > 0:
+            closedCount = 0
+            if alarmRunning:
+                alarmRunning = False
+                winsound.PlaySound(None, winsound.SND_ASYNC)
+
+        if lResult == 0 and rResult == 0 and not alarmRunning:
+            closedCount += 1
+
+        if closedCount > 10:
+            if not alarmRunning:
+                alarmRunning = True
+                winsound.PlaySound(
+                    "Alarm.wav", winsound.SND_ASYNC | winsound.SND_FILENAME | winsound.SND_ALIAS)
+            cv2.putText(image, "Sleepy", (20, 40),
+                        cv2.FONT_HERSHEY_COMPLEX, 1.0, (0, 0, 255))
 
         cv2.rectangle(image, left[0], left[1], (0, 0, 255))
         cv2.rectangle(image, right[0], right[1], (0, 0, 255))
