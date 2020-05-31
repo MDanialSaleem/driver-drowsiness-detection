@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 
 print("[INFO] Loading our own neural network for open close detection")
-model = load_model("Models/dddshallow.hdf5")
+model = load_model("Models/nonet.hdf5")
 print("[INFO] Complete")
 
 

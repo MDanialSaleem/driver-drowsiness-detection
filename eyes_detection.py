@@ -2,8 +2,7 @@ import dlib
 from preprocess import getEyesPrimary, shape_to_np, getEyesModified
 
 
-print("[INFO] Loading DLIB shape predictor 5 and 68")
-# DLIB5 = dlib.shape_predictor("Models/DLIB5.dat")
+print("[INFO] Loading DLIB shape predictor 68")
 DLIB68 = dlib.shape_predictor("Models/DLIB68.dat")
 print("[INFO] Complete")
 

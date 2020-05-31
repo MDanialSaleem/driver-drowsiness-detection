@@ -11,7 +11,6 @@ def shape_to_np(shape, n):
     return coords
 
 
-# for reference to these three functions look at the primary research paper.
 def getMinY(shapeArr, listOfPoints):
     # return the y coordinate of the lowest point in listOfPoints
     minimum = sys.maxsize
@@ -28,6 +27,8 @@ def getMaxY(shapeArr, listOfPoints):
     return maximum
 
 
+# for reference to this look a the primary research paper. This code is here for legacy reasons since we 
+# are not using the method mentioned in primary anymore.
 def getRectCoordPrimary(shapeArr, i, j, m, n):
     x = (shapeArr[i][0] + shapeArr[j][0])/2
     x = int(x)
@@ -38,6 +39,8 @@ def getRectCoordPrimary(shapeArr, i, j, m, n):
     return (x, y)
 
 
+# our own version of eye extractor that differs from the primary research paper, but generally performs much
+# better.
 def getEyesModified(shapeArr):
     leftEyeTopLeft = (shapeArr[17][0], getMinY(shapeArr, [18, 19, 20]))
     leftEyeBottomRight = (shapeArr[21][0], shapeArr[29][1])
@@ -48,6 +51,7 @@ def getEyesModified(shapeArr):
     return [(leftEyeTopLeft, leftEyeBottomRight), (rightEyeTopLeft, rightEyeBottomRight)]
 
 
+# for reference to these three functions look at the primary research paper.
 def getEyesPrimary(shapeArr):
     leftEyeTopLeft = getRectCoordPrimary(shapeArr, 17, 36, [17, 21], [37, 38])
     leftEyeBottomRight = getRectCoordPrimary(shapeArr, 21, 39, [29], [40, 41])
