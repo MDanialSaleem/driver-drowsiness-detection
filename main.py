@@ -35,14 +35,14 @@ while True:
 
         lCount = lCount + 1 if lResult != 0 else lCount
         rCount = rCount + 1 if rResult != 0 else rCount
-
-        if lResult > 0 or rResult > 0:
+        threshold = 0.01
+        if lResult > threshold or rResult > threshold:
             closedCount = 0
             if alarmRunning:
                 alarmRunning = False
                 winsound.PlaySound(None, winsound.SND_ASYNC)
 
-        if lResult == 0 and rResult == 0 and not alarmRunning:
+        if lResult <= threshold and rResult <= threshold and not alarmRunning:
             closedCount += 1
 
         if closedCount > 10 and not alarmRunning:
